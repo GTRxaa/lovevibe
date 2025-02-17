@@ -1,16 +1,87 @@
+/* Подключаем базовые стили от Tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Основные глобальные стили */
+:root {
+  --primary-color: #1E40AF; /* Синий цвет */
+  --primary-hover: #2563EB; /* Цвет при наведении */
+  --background-light: #F3F4F6; /* Светлый фон */
+  --text-dark: #333; /* Цвет текста */
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Helvetica', 'Arial', sans-serif; /* Используем кастомный шрифт */
+  background-color: var(--background-light); /* Используем переменную для фона */
+  color: var(--text-dark); /* Используем переменную для цвета текста */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Стили для кода */
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* Кастомные кнопки */
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 0.375rem; /* Скругленные углы */
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--primary-hover); /* Цвет при наведении */
+}
+
+/* Кастомные стили для ссылок */
+a {
+  color: var(--primary-color); /* Цвет ссылок */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline; /* Подчеркивание при наведении */
+}
+
+/* Добавим респонсивность для улучшения внешнего вида на мобильных устройствах */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Стили для картинок, чтобы они были адаптивными */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Дополнительные настройки для Tailwind */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Стили для элементов, которые могут требовать большего расстояния на мобильных */
+@media (max-width: 640px) {
+  body {
+    padding: 1rem;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+  button {
+    padding: 0.75rem 1.5rem;
+  }
 }

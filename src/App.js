@@ -4,42 +4,48 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
-import { logPageView, logButtonClick } from './firebase'; // Импортируем функции для логирования
+import { logPageView, logButtonClick } from "./firebase"; // Теперь эти функции есть!
 
 function App() {
-  // Логирование посещения страницы при загрузке компонента
   useEffect(() => {
-    logPageView(); // Логирование события при каждом рендере компонента
+    logPageView(); // Логируем посещение страницы
   }, []);
 
-  // Логирование кликов по ссылкам
   const handleLinkClick = (linkName) => {
-    logButtonClick(linkName); // Логирование клика по ссылке
+    logButtonClick(linkName);
   };
 
   return (
     <Router>
-      <div className="p-4 max-w-4xl mx-auto">
-        <nav className="flex justify-between p-4 bg-blue-500 text-white rounded-lg">
-          <Link to="/" onClick={() => handleLinkClick('home')}>
-            🏠 Главная
-          </Link>
-          <Link to="/register" onClick={() => handleLinkClick('register')}>
-            📝 Регистрация
-          </Link>
-          <Link to="/login" onClick={() => handleLinkClick('login')}>
-            🔑 Вход
-          </Link>
-          <Link to="/profile" onClick={() => handleLinkClick('profile')}>
-            👤 Профиль
-          </Link>
+      <div className="min-h-screen bg-gray-50">
+        <nav className="bg-blue-600 text-white p-4 shadow-md">
+          <div className="max-w-7xl mx-auto flex justify-between items-center">
+            <div className="text-xl font-semibold">LoveVibe</div>
+            <div className="flex space-x-6">
+              <Link to="/" onClick={() => handleLinkClick("home")} className="text-lg hover:text-gray-300">
+                🏠 Главная
+              </Link>
+              <Link to="/register" onClick={() => handleLinkClick("register")} className="text-lg hover:text-gray-300">
+                📝 Регистрация
+              </Link>
+              <Link to="/login" onClick={() => handleLinkClick("login")} className="text-lg hover:text-gray-300">
+                🔑 Вход
+              </Link>
+              <Link to="/profile" onClick={() => handleLinkClick("profile")} className="text-lg hover:text-gray-300">
+                👤 Профиль
+              </Link>
+            </div>
+          </div>
         </nav>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<Profile />} />
-        </Routes>
+
+        <div className="p-6 bg-white shadow-lg rounded-lg max-w-7xl mx-auto mt-8">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+        </div>
       </div>
     </Router>
   );
